@@ -1,4 +1,4 @@
-	/*Text에 밑줄 치는 CSS 효과*/
+/*Text에 밑줄 치는 CSS 효과*/
 		.magicline:after{
 			content: '';
 			display: block;
