@@ -29,7 +29,7 @@
 			margin: 0 10px;
 			border-radius: 30%;
 			box-shadow: 0 5px 15px -5px #00000070; 
-			color: #0F4C81;
+			color: #298791;
 			overflow: hidden;
 			position: relative;
 			text-align: center;
@@ -48,13 +48,13 @@
 			position: absolute;
 			width: 120%;
 			height: 120%;
-			background-color: #0F4C81;
+			background-color: #298791;
 			transform: rotate(45deg);
 			left: -110%;
 			top: 90%;
 		}
 		.sns_btn:hover::before{
-			animation: car 0.5s 1;
+			animation: car 1.2s 1;
 			top: -10%;
 			left: -10%;
 		}
