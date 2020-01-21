@@ -15,12 +15,12 @@
 			justify-content: space-around;
 			box-sizing: border-box;
 			padding: 25px;
-			margin: 25px auto;
+			margin: 0 auto;
 		}
 
 		/* 사이드 내용 */
 		.side_wrap{
-			border: 1px solid red;
+			border: 1px;
 			width: 450px;
 			margin-right: 25px; 
 		}
@@ -91,7 +91,7 @@
 		
 		/* 소개내용 */
 		.content_wrap{
-			border: 1px solid blue;
+			border: 1px;
 			width: 850px;
 		}
 		.content_padding{
@@ -184,7 +184,7 @@
 		.fix_btn:hover > i{
 			transform: scale(1.3);
 		}
-		.conn_btn{
+		.conn_btn, .close_btn{
 			bottom: 30px;
 			background-color: #E14F54;
 		}
@@ -194,8 +194,8 @@
 		}
 		.msg_wrap{
 			position: absolute;
-			bottom: 0;
-			right: 90px;
+			bottom: 30px;
+			right: 150px;
 			background-color: white;
 			/*padding: 15px;*/
 			border-radius: 5px;
@@ -210,15 +210,12 @@
 			padding: 15px;
 			color: #2F3138;
 			font-size: 15px;
-			width: 340px;
+			width: 700px;
 		}
 		.send_info{
 			display: flex;
 			justify-content: space-between;
 			align-items: center;
-		}
-		.send_info > input {
-			width: 150px;
 		}
 		.note_wrap > div{
 			margin-bottom: 8px;
@@ -235,29 +232,82 @@
 		.resume_wrap:hover{
 			transform: scale(1.3);
 		}
+		.note_wrap input{
+			font-size: 20px;
+			color: #2F3138;
+			outline: none;
+			height: 35px;
+			padding: 7px 0 6px;
+			border: 0;
+			width: 100%;
+		}
+		.send_name, .send_email, .send_msg{
+			border: 1px solid #2F3138;
+			padding: 10px 35px 10px 15px;
+			width: 100%;
+		}
+		/* name과 email은 width가 100%이기 때문에 바꾸려면 복잡해지므로
+		   name과 email을 띄우기위한 여백 공간용 div 태그를 줌. 여백을 줄 수 있는 방법은 다양하다.*/
+		.area{width: 20px;}
+		.send_btn{
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+		.send_btn > a {
+			width: 200px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			padding: 12px 15px;
+			border: 1px solid #72C7D2;
+			border-radius: 5px;
+		}
+		.err_msg{
+			color: red;
+			font-size: 20px;
+			visibility: hidden;
+		}
+		.modal_wrap{
+			position: fixed;
+			z-index: 100;
+			background-color: rgba(0,0,0,0.4);
+			overflow: auto;
+			width: 100%;
+			height: 100%;
+			display: none;
+		}
+
 	</style>
 </head>
 <body>
 	<div class="top_btn fix_btn"><i class="fas fa-arrow-up"></i></div>
-	<div class="conn_btn fix_btn">
+	<div class="conn_btn fix_btn"><i class="fas fa-envelope"></i></div>
+	<div class="modal_wrap">
+		<div class="close_btn fix_btn"><i class="fas fa-times"></i></div>
 		<div class="msg_wrap">
 			<div class="menu_title"><i class="fas fa-envelope"></i><span>Message</span></div>
 			<div class="note_wrap">
 			<div class="conn_note">Please contact me if you are interested.</div>
 			<div class="send_info">
-				<input type="text" placeholder="Name">
-				<input type="text" placeholder="Email">
+				<div class="send_name">
+					<input type="text" class="send_input" placeholder="Name">
+				</div>
+				<div class="area"></div>
+				<div class="send_email">
+					<input type="text" class="send_input" placeholder="Email">
+				</div>
 			</div>
 			<div class="send_msg">
-				<input type="text" placeholder="Message">
+				<input type="text" class="send_input" placeholder="Message">
 			</div>
 			<div class="send_btn">
-				<a href="#"><i class="fas fa-rocket">Send</i></a>
+				<span class="err_msg">Please enter a value!!</span>
+				<a href="#"><i class="fas fa-rocket"> Send Message</i></a>
 			</div>
 			</div>
-		</div>		
-		<i class="fas fa-envelope"></i></div>
-
+		</div>
+	</div>
 	<div class="wrap">
 		<aside>
 			<div class="side_wrap">
@@ -278,9 +328,7 @@
 						<div><i class="fas fa-envelope-square"></i>minmilleminho@gmail.com</div>
 						<div><i class="fas fa-mobile-alt"></i>010-6406-7934</div>
 					</div>
-					
-					</div>
-				
+				</div>
 				</div>
 				<div class="common_panel layer nav">
 					<div class="menu_title"><i class="fas fa-bars"></i><span>Menu</span></div>
@@ -288,6 +336,7 @@
 						<li><a href="#">Tech Skills</a></li>
 						<li><a href="#">Education</a></li>
 						<li><a href="#">License</a></li>
+						<li><a href="#">Career</a></li>
 					</ul>
 					
 				</div>
@@ -315,7 +364,6 @@
 				</div>
 			</div>
 		</aside>
-		
 		<section>
 			<div class="content_wrap">
 				<div class="common_panel layer nav">
@@ -379,7 +427,22 @@
 							<thead>
 								<th>NO</th><th>License name</th><th>Institution</th><th>Period</th>
 							</thead>
+							<tbody>
 								<tr><td>1</td><td>1종&nbsp;보통&nbsp;운전면허</td><td>경찰청</td><td>2000</td></tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="common_panel layer nav">
+					<div class="menu_title"><i class="fas fa-pencil-alt"></i><span>Career</span></div>
+					<div class="content_padding">
+						<table class="edu_table">
+							<thead>
+								<th>NO</th><th>Company name</th><th>job</th><th>Period</th>
+							</thead>
+							<tbody>
+								<tr><td>1</td><td>DongHa Corperation</td><td>PM(Part of Plant Manager) of AFVI(Automatic Final Visual Inspection)<br>Process control<br></td><td>2009 ~ 2017</td></tr>
+								<tr><td>2</td><td>ZTech</td><td>내용추가 할 것</td><td>2017 ~ 2019</td></tr>
 							</tbody>
 						</table>
 					</div>
@@ -398,7 +461,6 @@
 			</div>
 		</section>
 	</div>
-
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script type="text/javascript">
@@ -420,5 +482,45 @@
 	}); 
 	// 두번째 방법 : sns 버튼 효과처럼 왼쪽으로 밀었다가 오른쪽으로 다시 밀어오는 방법
 
+	// name,email,message 유효성 검사하여 메시지 띄우기
+	// 이 문서전체에서 클래스가 샌드 인풋인 애가 블러(포커스가 빠져나가면)하면 아래 실행문을 실행(펑션)하라.
+	$(document).on('blur', '.send_input', function(){
+		var inputVal = $(this).val();
+		// console.log('값:' + inputVal);
+		// 안쓰고 넘기면 경고 메시지 띄우고 제대로 쓰면 안띄움.
+		// input blur시 유효성 체크(테두리 및 경고메시지 출력)
+		if(inputVal == ''){
+			$('.err_msg').css('visibility', 'visible');
+			$(this).parent().css('border', '1px solid #DD4B4F')
+		} else {
+			$('.err_msg').css('visibility', 'hidden');
+			$(this).parent().css('border', '1px solid #2F3138')
+		}
+
+		// input값을 모두 비교하여 값이 있으면 버튼색상 변경
+		var code = 0;
+		$('.note_wrap').find('.send_input').each(function(){
+			if($(this).val() == ''){
+				return false; // break: 반복문 종료
+			} else {
+				code += 1;
+			}
+		});
+		if(code == 3){
+			$('.send_btn > a').css('background-color', '#414D41').css('color', 'white');
+		} else {
+			$('.send_btn > a').css('background-color', 'white').css('color', '#2F3138');
+		}
+
+	});
+
+	$(document).on('click', '.conn_btn', function(){
+		$('.modal_wrap').css('display','block');
+		$(this).css('display', 'none');
+	});
+	$(document).on('click', '.close_btn', function(){
+		$('.modal_wrap').css('display','none');
+		$('.conn_btn').css('display', 'flex');
+	});
 </script>
 </html>

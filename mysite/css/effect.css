@@ -91,7 +91,7 @@
 			font-size: 18px;
 			font-family: sans-serif;
 			color: #2f3138;
-			text-transform: uppercase;
+			/*text-transform: uppercase;*/
 			transition: 0.5s;
 		}
 		ul:hover li a{
